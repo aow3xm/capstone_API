@@ -47,6 +47,13 @@ header {
                         &:hover {
                             color: $color-gray;
                         }
+
+
+                        &#cart {
+                            span.cart-value {
+                                @include textStyle(0.8rem, $fw-bold, $color-white);
+                            }
+                        }
                     }
 
 

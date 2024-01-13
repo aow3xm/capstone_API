@@ -63,6 +63,11 @@ header .header_content nav.header-nav ul li a {
 header .header_content nav.header-nav ul li a:hover {
   color: #808080;
 }
+header .header_content nav.header-nav ul li a#cart span.cart-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
 
 * {
   padding: 0;
@@ -123,13 +128,14 @@ section.introduction .introduction_content .tab-content .tab-content-inner {
   align-items: center;
 }
 section.introduction .introduction_content .tab-content .tab-content-inner .tab-image {
-  width: 70%;
-  height: 100%;
+  width: 700px;
+  height: 700px;
 }
 section.introduction .introduction_content .tab-content .tab-content-inner .tab-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  text-align: center;
 }
 section.introduction .introduction_content .tab-content .tab-content-inner .tab-desc {
   width: 30%;
@@ -203,6 +209,7 @@ section.products .products_content .products_list .row .item {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   max-width: 30%;
+  min-height: 600px;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
 }

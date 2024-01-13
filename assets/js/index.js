@@ -24,6 +24,7 @@ let addToCart = (id, name, price, desc) => {
     let phone = new phoneObject(id, name, price, desc);
     phoneArr.push(phone);
     saveToLocalStorage();
+    updateCartValue();
 }
 
 
@@ -37,3 +38,12 @@ let getFromLocalStorage = () => {
     }
 }
 getFromLocalStorage();
+let updateCartValue = () => {
+    if (document.querySelector('header #cart .cart-value')) {
+        document.querySelector('header #cart .cart-value').remove();
+    }
+    document.querySelector('header #cart').innerHTML += `
+        <span class="cart-value">(${phoneArr.length})</span>
+    `;
+}
+updateCartValue();
