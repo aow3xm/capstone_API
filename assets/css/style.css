@@ -1,5 +1,4 @@
 @import url("https://fonts.cdnfonts.com/css/sf-pro-display");
-@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 * {
   padding: 0;
   margin: 0;
@@ -67,25 +66,6 @@ header .header_content nav.header-nav ul li a#cart span.cart-value {
   font-size: 0.8rem;
   font-weight: 700;
   color: #ffffff;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "SF Pro Display", sans-serif;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.container {
-  max-width: 1500px;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 section.introduction {
@@ -168,7 +148,7 @@ section.introduction .introduction_content .tab-content .tab-content-inner .tab-
 }
 
 section.products {
-  background-color: #000000;
+  background-color: #ffffff;
   padding: 100px 0;
 }
 section.products .products_content {
@@ -194,6 +174,7 @@ section.products .products_content select.phone-select {
   margin: 20px 0;
   width: 100%;
   max-width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 section.products .products_content .products_list {
   padding: 20px 0;

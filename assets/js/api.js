@@ -1,5 +1,9 @@
 const api_url = 'https://6597f70f668d248edf23ce4d.mockapi.io/api/v1/products';
-
+const path = {
+    index: '/index.html',
+    cart: '/customer/view/cart.html',
+    admin: '/admin.html'
+}
 let fetchProducts = (brand = '') => {
     axios({
         url: api_url,
@@ -9,7 +13,14 @@ let fetchProducts = (brand = '') => {
         }
     })
         .then(res => {
-            renderProducts(res.data);
+
+            if (window.location.pathname == path.index) {
+                renderProducts(res.data);
+
+            }
+            else if (window.location.pathname == path.cart) {
+                // 
+            }
         })
         .catch(res => {
             alert('Đã có lỗi xảy ra');
@@ -33,7 +44,7 @@ let renderProducts = (data) => {
         </div >
     <div class="item-footer">
         <p class="item-price">${element.price}$</p>
-        <button onclick="addToCart('${element.id}', '${element.price}', '${element.name}', '${element.desc}')" class="action-btn">Thêm vào giỏ hàng</button>
+        <button onclick="addToCart('${element.id}', '${element.name}', '${element.price}', '${element.img}', '${element.desc}')" class="action-btn">Thêm vào giỏ hàng</button>
     </div>
 
 `;

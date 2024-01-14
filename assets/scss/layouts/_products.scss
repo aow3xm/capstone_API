@@ -2,7 +2,7 @@
 @import '../abstracts/_mixins';
 
 section.products {
-    background-color: $color-black;
+    background-color: $color-white;
     padding: 100px 0;
 
     .products_content {
@@ -21,6 +21,7 @@ section.products {
             margin: 20px 0;
             width: 100%;
             max-width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .products_list {
