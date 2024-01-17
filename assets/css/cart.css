@@ -173,7 +173,7 @@ section.cart .cart_content .items_list .item .item-desc .item-quantity input {
   padding: 0 10px;
   height: 30px;
 }
-section.cart .cart_content .items_list .item .item-desc .item-quantity button {
+section.cart .cart_content .items_list .item .item-desc .item-quantity button:not(:last-child) {
   height: 30px;
   width: 30px;
   background-color: #000000;
@@ -181,6 +181,20 @@ section.cart .cart_content .items_list .item .item-desc .item-quantity button {
   border: none;
   border-radius: 5px;
   padding: 0 10px;
+}
+section.cart .cart_content .items_list .item .item-desc .item-quantity button:last-child {
+  height: 30px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+section.cart .cart_content .items_list .item .item-desc .item-quantity button:last-child:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 html,

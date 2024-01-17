@@ -4,7 +4,7 @@ const path = {
     cart: '/customer/view/cart.html',
     admin: '/admin.html'
 }
-let fetchProducts = (brand = '') => {
+export let fetchProducts = (brand = '') => {
     axios({
         url: api_url,
         method: 'GET',
@@ -28,7 +28,7 @@ let fetchProducts = (brand = '') => {
 
 }
 fetchProducts();
-let renderProducts = (data) => {
+export let renderProducts = (data) => {
     data.forEach(element => {
         let itemElement = document.createElement('div');
         itemElement.classList.add('item', 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3');

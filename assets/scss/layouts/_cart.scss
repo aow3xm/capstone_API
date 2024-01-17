@@ -39,6 +39,8 @@ section.cart {
                         color: $color-black;
                         border: 1px solid $color-black;
                     }
+
+
                 }
 
             }
@@ -100,9 +102,23 @@ section.cart {
                         }
 
                         button {
-                            height: 30px;
-                            width: 30px;
-                            @include buttonStyle($color-black, $color-white, none, 5px, 0 10px);
+                            &:not(:last-child) {
+                                height: 30px;
+                                width: 30px;
+                                @include buttonStyle($color-black, $color-white, none, 5px, 0 10px);
+                            }
+
+                            &:last-child {
+                                height: 30px;
+                                @include buttonStyle($color-black, $color-white, none, 5px, 0 10px);
+                                transition: all 0.3s ease-in-out;
+
+                                &:hover {
+                                    background-color: $color-white;
+                                    color: $color-black;
+                                    border: 1px solid $color-black;
+                                }
+                            }
                         }
                     }
                 }

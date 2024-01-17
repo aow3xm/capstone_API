@@ -1,17 +1,20 @@
-let saveToLocalStorage = (arr = phoneArr) => {
+export let phoneArr = [];
+
+export let getFromLocalStorage = () => {
+    if (localStorage.getItem('phoneArr')) {
+        phoneArr = JSON.parse(localStorage.getItem('phoneArr'));
+    }
+    return phoneArr;
+}
+
+// rest of the code
+export let saveToLocalStorage = (arr = phoneArr) => {
     localStorage.setItem('phoneArr', JSON.stringify(arr));
 }
 
-let getFromLocalStorage = (arr) => {
-    if (localStorage.getItem('phoneArr')) {
-        return JSON.parse(localStorage.getItem('phoneArr'));
-    }
-    else {
-        return [];
-    }
-}
 
-let removeItemFromLocalStorage = (index) => {
+
+export let removeItemFromLocalStorage = (index) => {
     phoneArr.splice(index, 1);
     saveToLocalStorage();
 }
