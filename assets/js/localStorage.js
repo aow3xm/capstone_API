@@ -7,12 +7,9 @@ export let getFromLocalStorage = () => {
     return phoneArr;
 }
 
-// rest of the code
 export let saveToLocalStorage = (arr = phoneArr) => {
     localStorage.setItem('phoneArr', JSON.stringify(arr));
 }
-
-
 
 export let removeItemFromLocalStorage = (index) => {
     phoneArr.splice(index, 1);

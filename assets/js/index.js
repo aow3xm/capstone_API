@@ -36,18 +36,15 @@ let addToCart = (id, name, price, img, desc) => {
     }
     localStorage.saveToLocalStorage();
     updateCartValue();
-    console.log(phoneArr)
 }
 
 
 
 
 let updateCartValue = () => {
-    console.log(1)
     if (document.querySelector('header #cart .cart-value')) {
         document.querySelector('header #cart .cart-value').remove();
     }
-    console.log(phoneArr)
     let totalQuantity = phoneArr.reduce((total, phone) => total + phone.quantity, 0);
     document.querySelector('header #cart').innerHTML += `
                 <span class="cart-value">(${totalQuantity})</span>
