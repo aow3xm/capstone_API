@@ -160,7 +160,7 @@ section.products .products_content {
 section.products .products_content h1.products-title {
   font-size: 3rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
 }
 section.products .products_content select.phone-select {
   font-size: 1.5rem;

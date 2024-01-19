@@ -1,4 +1,4 @@
-import * as localStorage from './localStorage.js';
+import * as localStorage from '../services/localStorage.js';
 let phoneArr = localStorage.getFromLocalStorage();
 phoneArr.forEach((element, index) => {
     let item = document.createElement('div');

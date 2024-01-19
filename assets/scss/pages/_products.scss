@@ -1,5 +1,3 @@
-@import '../abstracts/_variables';
-@import '../abstracts/_mixins';
 
 section.products {
     background-color: $color-white;
@@ -10,7 +8,7 @@ section.products {
         flex-direction: column;
 
         h1.products-title {
-            @include textStyle(3rem, $fw-bold, $color-white);
+            @include textStyle(3rem, $fw-bold, $color-black);
             // text-align: center;
 
         }

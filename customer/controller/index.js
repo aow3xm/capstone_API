@@ -1,29 +1,45 @@
-import * as api from './api.js';
-import * as localStorage from './localStorage.js';
-import { phoneObject } from './phone.js';
+import API_METHODS from '../services/service.js';
+import { renderProducts, clearProducts } from '../controller/controller.js';
+import * as localStorage from '../services/localStorage.js';
+import { phoneObject } from '../models/phone.js';
 export let phoneArr = localStorage.getFromLocalStorage();
 
-// rest of the code
+const fetchProducts = () => {
+    API_METHODS.fetchProducts()
+        .then(res => {
+            renderProducts(res.data);
+        })
+        .catch(err => console.log(err));
+
+}
+fetchProducts();
 document.querySelector('.phone-select').addEventListener('change', (e) => {
     switch (e.target.value) {
         case '0':
             clearProducts();
-            api.fetchProducts();
+            fetchProducts();
             break;
         case '1':
             clearProducts();
-            api.fetchProducts('samsung');
+            API_METHODS.fetchProducts('samsung')
+                .then(res => {
+                    renderProducts(res.data);
+                })
+                .catch(err => console.log(err));
             break;
         case '2':
             clearProducts();
-            api.fetchProducts('iphone');
+            API_METHODS.fetchProducts('iphone')
+                .then(res => {
+                    renderProducts(res.data);
+                })
+                .catch(err => console.log(err));
+
             break;
     }
 });
 
-let clearProducts = () => {
-    document.querySelector('.products_list .row').innerHTML = '';
-}
+
 
 window.addToCart = (id, name, price, img, desc) => addToCart(id, name, price, img, desc);
 let addToCart = (id, name, price, img, desc) => {
