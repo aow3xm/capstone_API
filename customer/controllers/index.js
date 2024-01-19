@@ -1,5 +1,5 @@
 import API_METHODS from '../services/service.js';
-import { renderProducts, clearProducts } from '../controller/controller.js';
+import { renderProducts, clearProducts } from './controller.js';
 import * as localStorage from '../services/localStorage.js';
 import { phoneObject } from '../models/phone.js';
 export let phoneArr = localStorage.getFromLocalStorage();
