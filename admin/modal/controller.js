@@ -1,26 +1,32 @@
 
 
 export let renderPhoneList = (phoneArr) => {
-    // console.log(phoneArr);
-    let contentHTML = ''
-    phoneArr.forEach((item) => {
+    let contentHTML = '';
+    phoneArr.reverse().forEach((item) => {
         let trString = `
             <tr>
                 <td>${item.id}</td>
                 <td>${item.name}</td>
                 <td>${item.price}</td>
-                <td>'${item.img}</td>
+                <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
                 <td>${item.desc}</td>
 
                 <td>
-                <button onlick="deletePhone(${item.id})"  class ="btn btn-danger" > Delete</button>
-                <button class = "btn btn-primary" > Sửa </button> </td>
+                <button onclick="deletePhone(${
+                    item.id
+                  })" class= "btn btn-danger">Delete</button>
+            
+                    <button class="btn btn-primary" onclick="getDetailPhone(${
+                        item.id
+                      })">Sửa</button>
+                </td>
             </tr>
-            `;
+        `;
         contentHTML += trString;
     });
-    document.getElementById('tablePhone').innerHTML = contentHTML
-}
+    document.getElementById('tablePhone').innerHTML = contentHTML;
+};
+
 export let onSuccess = (message) => {
     Swal.fire({
         title: message,
@@ -41,6 +47,15 @@ export let getDataPhoneForm = () => {
         price,
         desc,
         img,
-    }
+    };
     return phone;
-}
+};
+export let showInfoPhone = (dataPhone) => {
+    console.log('dataPhone: ', dataPhone);
+    document.getElementById('id').value = dataPhone.id;
+    document.getElementById('name').value = dataPhone.name;
+    document.getElementById('price').value = dataPhone.price;
+    document.getElementById('desc').value = dataPhone.desc;
+    document.getElementById('img').value = dataPhone.img;
+     
+  };
