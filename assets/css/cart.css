@@ -110,11 +110,11 @@ section.cart .cart_content .total .total_content button {
   border-radius: 5px;
   padding: 10px;
   transition: all 0.3s ease-in-out;
+  border: 1px solid #000000;
 }
 section.cart .cart_content .total .total_content button:hover {
   background-color: #ffffff;
   color: #000000;
-  border: 1px solid #000000;
 }
 section.cart .cart_content .items_list {
   display: flex;

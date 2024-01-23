@@ -1,9 +1,29 @@
-import * as localStorage from '../services/localStorage.js';
-let phoneArr = localStorage.getFromLocalStorage();
-phoneArr.forEach((element, index) => {
-    let item = document.createElement('div');
-    item.classList.add('item', `item${index}`);
-    item.innerHTML = `
+import * as lS from '../services/localStorage.js';
+
+let phoneArr = lS.getFromLocalStorage();
+let addInputEvent = () => {
+    document.querySelectorAll('.item-quantity input').forEach((element, index) => {
+        element.addEventListener('input', () => {
+            if (element.value == 0) {
+                Swal.fire({
+                    text: "Số lượng tối thiểu là 1",
+                    icon: "error"
+                });
+                element.value = 1;
+            }
+            console.log(index)
+            phoneArr[index].quantity = element.value * 1;
+            updateInputPrice(index, phoneArr[index].id);
+            updateToTal();
+            lS.saveToLocalStorage(phoneArr);
+        })
+    });
+}
+let renderList = () => {
+    phoneArr.forEach((element, index) => {
+        let item = document.createElement('div');
+        item.classList.add('item', `item${index}`);
+        item.innerHTML = `
     <div class="item-image">
               <img src="${element.img}" alt="" />
             </div>
@@ -13,80 +33,81 @@ phoneArr.forEach((element, index) => {
               </p>
               <p class="item-price">${element.price * element.quantity}$</p>
               <div class="item-quantity">
-                <button onclick="subItem('${element.id}','${index}')" class="btn-back">-</button>
+                <button onclick="subItem('${index}','${element.id}')" class="btn-back">-</button>
                 <input type="number" name="" id="" placeholder="${element.quantity}" />
-                <button onclick="addItem('${element.id}','${index}')" class="btn-pre">+</button>
-              <button onclick="removeItem('${index}')" class="btn-remove">Xóa</button>
+                <button onclick="addItem('${index}','${element.id}')" class="btn-pre">+</button>
+              <button onclick="removeItem('${element.id}')" class="btn-remove">Xóa</button>
                 </div>
             </div>
             `;
-    document.querySelector('.items_list').appendChild(item);
-});
-window.subItem = (id, index) => subItem(id, index);
-window.addItem = (id, index) => addItem(id, index);
-window.removeItem = (index) => removeItem(index);
-let subItem = (id, index) => {
-    phoneArr.forEach((element) => {
+        document.querySelector('.items_list').appendChild(item);
+    });
+    addInputEvent();
+}
 
-        if (element.id == id) {
-
-            if (element.quantity <= 1) {
-                removeItem(index);
+renderList();
+let subItem = (index, id) => {
+    phoneArr.find(item => {
+        if (item.id === id) {
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+                updateInputPrice(index, id);
             }
             else {
-                element.quantity *= 1;
-                element.quantity -= 1;
-                updateInputValue(index);
-
+                removeItem(id);
             }
-            updateTotalValue(index);
+            updateToTal();
+            lS.saveToLocalStorage(phoneArr);
         }
     })
-}
-let addItem = (id, index) => {
-    phoneArr.forEach((element) => {
-
-        if (element.id == id) {
-            element.quantity *= 1;
-
-            (element.quantity) += 1;
-            updateInputValue(index);
-            updateTotalValue(index);
+    console.log(phoneArr);
+};
+let addItem = (index, id) => {
+    phoneArr.find(item => {
+        if (item.id === id) {
+            item.quantity += 1;
+            updateInputPrice(index, id);
+            updateToTal();
+            lS.saveToLocalStorage(phoneArr);
         }
     })
+    console.log(phoneArr);
+};
 
+let removeItem = (id) => {
+    phoneArr = phoneArr.filter(item => item.id !== id);
+    updateToTal();
+    clearList();
+    renderList();
+    lS.saveToLocalStorage(phoneArr);
+    addInputEvent();
+};
+
+let updateToTal = () => {
+    console.log(phoneArr)
+    let total = phoneArr.reduce((total, current) => {
+        return total + current.quantity * Number(current.price);
+    }, 0);
+    console.log(total)
+    document.querySelector('.total_content h3').innerHTML = `Thanh toán : ${total}$`
+};
+updateToTal();
+let clearList = () => {
+    document.querySelector('.items_list').innerHTML = '';
 }
+let updateInputPrice = (index, id) => {
+    document.querySelector(`.item${index} .item-price`).innerHTML = `${phoneArr.find(item => item.id === id).price * phoneArr.find(item => item.id === id).quantity}$`;
+    document.querySelector(`.item${index} .item-quantity input`).value = `${phoneArr.find(item => item.id === id).quantity}`;
+};
 
-let removeItem = (index) => {
-    document.querySelector(`.item${index}`).remove();
-    localStorage.removeItemFromLocalStorage(index);
-    phoneArr.splice(index, 1);
-    updateTotalValue();
+document.querySelector('.total_content button').addEventListener('click', () => {
+    phoneArr = [];
+    clearList();
+    updateToTal();
+    lS.saveToLocalStorage(phoneArr);
+});
 
-}
+window.subItem = subItem;
+window.addItem = addItem;
+window.removeItem = removeItem;
 
-
-let updateInputValue = (itemIndex) => {
-    let inputElement = document.querySelector(`.item${itemIndex} .item-quantity input`);
-    inputElement.value = phoneArr[itemIndex].quantity;
-
-    document.querySelector(`.item${itemIndex} .item-price`).innerHTML = `${phoneArr[itemIndex].price * phoneArr[itemIndex].quantity}$`;
-    localStorage.saveToLocalStorage();
-}
-
-let totalRender = () => {
-    let total = phoneArr.reduce((total, phone) => total + phone.price * phone.quantity, 0);
-    document.querySelector('.total_content').innerHTML = `
-    
-    <h3 class="total">Thanh toán: ${total}$</h3>
-    <button>Thanh toán</button>
-    `;
-
-}
-
-totalRender();
-
-let updateTotalValue = () => {
-    let total = phoneArr.reduce((total, phone) => total + phone.price * phone.quantity, 0);
-    document.querySelector('.total_content h3.total').innerHTML = `Thanh toán: ${total}$`;
-}
