@@ -2,9 +2,6 @@ section.products {
     background-color: $color-white;
     padding: 100px 0;
 
-    @include responsive($phone) {
-        padding: 500px 0;
-    }
 
     .products_content {
         @include flexStyle(center, center);
@@ -36,10 +33,12 @@ section.products {
                     padding: 20px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
                     background-color: $color-white;
-                    // max-width: 30%;
-                    // min-height: 600px;
+                    min-width: 300px;
+                    min-height: 600px;
                     transition: all 0.3s ease-in-out;
                     border-radius: 5px;
+                    @include flexStyle(center, space-between);
+                    flex-direction: column;
 
                     &:hover {
                         transform: scale(1.02);
@@ -93,6 +92,7 @@ section.products {
 
                     .item-footer {
                         @include flexStyle(space-between, center);
+                        margin-top: auto;
 
                         p.item-price {
                             @include textStyle(1.2rem, $fw-bold, $color-black);
