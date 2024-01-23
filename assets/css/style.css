@@ -79,6 +79,80 @@ section.introduction {
   padding: 200px 0;
   background-color: #86A7FC;
 }
+@media only screen and (max-width: 600px) {
+  section.introduction .tab-content .tab-content-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+  }
+  section.introduction .tab-content .tab-content-inner .tab-image img {
+    width: 200px;
+    max-height: 40%;
+    object-fit: cover;
+  }
+  section.introduction .tab-content .tab-content-inner .tab-desc h3 {
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    color: #000000;
+  }
+  section.introduction .tab-content .tab-content-inner .tab-desc p {
+    font-size: 1rem !important;
+    font-weight: 400;
+    color: #000000;
+    margin: 10px 0;
+  }
+  section.introduction .tab-content .tab-content-inner .tab-desc button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px !important;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  section.introduction .tab-content .tab-content-inner .tab-desc button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 30px;
+  }
+}
+section.introduction .tab-content-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+section.introduction .tab-content-inner .tab-image img {
+  width: 400px;
+  max-height: 40%;
+  object-fit: cover;
+}
+section.introduction .tab-content-inner .tab-desc h3 {
+  font-size: 2rem !important;
+  font-weight: 700;
+  color: #000000;
+}
+section.introduction .tab-content-inner .tab-desc p {
+  font-size: 1.3rem !important;
+  font-weight: 400;
+  color: #000000;
+  margin: 10px 0;
+}
+section.introduction .tab-content-inner .tab-desc button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px !important;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+section.introduction .tab-content-inner .tab-desc button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 30px;
+}
 section.introduction .introduction_content .nav-tabs {
   display: flex;
   justify-content: center;
@@ -107,13 +181,9 @@ section.introduction .introduction_content .tab-content .tab-content-inner {
   justify-content: center;
   align-items: center;
 }
-section.introduction .introduction_content .tab-content .tab-content-inner .tab-image {
-  width: 700px;
-  height: 700px;
-}
 section.introduction .introduction_content .tab-content .tab-content-inner .tab-image img {
-  width: 100%;
-  height: 100%;
+  max-width: 600px;
+  max-height: 50%;
   object-fit: cover;
   text-align: center;
 }
@@ -150,6 +220,11 @@ section.introduction .introduction_content .tab-content .tab-content-inner .tab-
 section.products {
   background-color: #ffffff;
   padding: 100px 0;
+}
+@media only screen and (max-width: 600px) {
+  section.products {
+    padding: 500px 0;
+  }
 }
 section.products .products_content {
   display: flex;
@@ -189,8 +264,6 @@ section.products .products_content .products_list .row .item {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  max-width: 30%;
-  min-height: 600px;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
 }

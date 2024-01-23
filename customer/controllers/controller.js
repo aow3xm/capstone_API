@@ -1,7 +1,7 @@
 export let renderProducts = (data) => {
     data.forEach(element => {
         let itemElement = document.createElement('div');
-        itemElement.classList.add('item', 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3');
+        itemElement.classList.add('item', 'col-12', 'col-md-4', 'col-lg-4', 'col-xl-3');
         itemElement.innerHTML = `
         <div class="item-image">
             <img src="${element.img}" alt="">
