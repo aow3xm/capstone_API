@@ -296,6 +296,9 @@ section.products .products_content .products_list .row .item .item-image img {
 }
 section.products .products_content .products_list .row .item .item-desc {
   margin: 10px 0;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 section.products .products_content .products_list .row .item .item-desc h3.item-name {
   font-size: 1.5rem;

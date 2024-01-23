@@ -84,6 +84,10 @@ section.products {
                     .item-desc {
                         margin: 10px 0;
 
+                        white-space: wrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+
                         h3.item-name {
                             @include textStyle(1.5rem, $fw-bold, $color-black);
                         }
