@@ -6,6 +6,9 @@
   font-family: "SF Pro Display", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
 a:hover {
   text-decoration: none;
 }
@@ -258,7 +261,7 @@ section.products .products_content .products_list .row .item {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  min-width: 300px;
+  max-width: 330px;
   min-height: 600px;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;

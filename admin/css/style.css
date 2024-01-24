@@ -1,3 +1,81 @@
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+header.scrolled {
+  background-color: #000000;
+  padding: 0;
+}
+
+header {
+  background-color: transparent;
+  padding: 20px 0;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725);
+  transition: all 0.3s ease-in-out;
+}
+header .header_content {
+  max-width: 1700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header_content span.header-brand a {
+  font-size: 50px;
+  font-weight: 700;
+  color: #ffffff;
+}
+header .header_content nav.header-nav ul {
+  margin: 0 0;
+}
+header .header_content nav.header-nav ul li {
+  display: inline-block;
+}
+header .header_content nav.header-nav ul li:not(:last-child) {
+  margin-right: 10px;
+}
+header .header_content nav.header-nav ul li a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+header .header_content nav.header-nav ul li a:hover {
+  color: #808080;
+}
+header .header_content nav.header-nav ul li a#cart span.cart-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1500px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header#adminHeader {
+  background-color: #000;
+  padding: 0;
+}
+
 /* Global styles */
 /* Button styles */
 /* Main and Color styles */
@@ -24,4 +102,8 @@
   #selectList {
     width: 100% !important;
   }
+}
+.modal #header-title {
+  text-align: center;
+  padding: 10px 0;
 }

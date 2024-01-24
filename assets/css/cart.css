@@ -6,6 +6,9 @@
   font-family: "SF Pro Display", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
 a:hover {
   text-decoration: none;
 }

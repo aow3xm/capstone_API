@@ -2,7 +2,6 @@ section.products {
     background-color: $color-white;
     padding: 100px 0;
 
-
     .products_content {
         @include flexStyle(center, center);
         flex-direction: column;
@@ -30,10 +29,12 @@ section.products {
                 @include flexStyle(center, flex-start);
 
                 .item {
+
+
                     padding: 20px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
                     background-color: $color-white;
-                    min-width: 300px;
+                    max-width: 330px;
                     min-height: 600px;
                     transition: all 0.3s ease-in-out;
                     border-radius: 5px;

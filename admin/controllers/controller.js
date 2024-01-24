@@ -12,13 +12,11 @@ export let renderPhoneList = (phoneArr) => {
                 <td>${item.desc}</td>
 
                 <td>
-                <button onclick="deletePhone(${
-                    item.id
-                  })" class= "btn btn-danger">Delete</button>
+                <button onclick="deletePhone(${item.id
+            })" class= "btn btn-danger">Delete</button>
             
-                    <button class="btn btn-primary" onclick="getDetailPhone(${
-                        item.id
-                      })">Sửa</button>
+                    <button class="btn btn-primary" onclick="getDetailPhone(${item.id
+            })">Sửa</button>
                 </td>
             </tr>
         `;
@@ -35,18 +33,21 @@ export let onSuccess = (message) => {
     });
 };
 export let getDataPhoneForm = () => {
-    let id = document.getElementById('id').value
     let name = document.getElementById('name').value;
     let price = document.getElementById('price').value;
     let desc = document.getElementById('desc').value;
     let img = document.getElementById('img').value;
-
+    let frontCamera = document.getElementById('frontCamera').value;
+    let backCamera = document.getElementById('backCamera').value;
+    let screen = document.getElementById('screen').value;
     let phone = {
-        id,
         name,
         price,
         desc,
         img,
+        frontCamera,
+        backCamera,
+        screen,
     };
     return phone;
 };
@@ -57,5 +58,5 @@ export let showInfoPhone = (dataPhone) => {
     document.getElementById('price').value = dataPhone.price;
     document.getElementById('desc').value = dataPhone.desc;
     document.getElementById('img').value = dataPhone.img;
-     
-  };
+
+};
