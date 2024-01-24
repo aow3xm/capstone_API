@@ -1,3 +1,14 @@
+export let checkEmptyValue = (dataPhone) => {
+  const { id, name, price, desc } = dataPhone;
+
+  if (!id || !name || !price || !desc) {
+      alert('Vui lòng điền đầy đủ thông tin cho các trường!');
+      return false;
+  }
+
+  return true;
+}
+
 // Hàm validation kiểm tra dữ liệu không được bỏ trống cho các trường
 export const validateForm = (formData) => {
     const fields = [
@@ -46,28 +57,3 @@ export const clearErrorMessage = (displayId) => {
         errorElement.textContent = '';
     }
 };
-
-// let createPhone = () => {
-//     let dataPhone = getDataPhoneForm();
-
-//     // Kiểm tra không được bỏ trống cho từng trường và hiển thị thông báo lỗi nếu cần
-//     if (!validateForm(dataPhone)) {
-//         return;
-//     }
-
-//     // Tiếp tục xử lý nếu dữ liệu hợp lệ
-//     // ...
-
-//     phoneService
-//         .createPhoneApi(dataPhone)  
-//         .then((res) => {
-//             // console.log('res', res);
-//             fectPhoneList();
-//             onSuccess('Thêm thành công');
-//             $('#exampleModal').modal('hide');
-//             document.getElementById('formPhone').reset();
-//         })
-//         .catch((err) => {
-//             console.error('Không thể tạo thông tin mới:', err);
-//         });
-// };

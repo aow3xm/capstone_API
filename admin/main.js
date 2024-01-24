@@ -1,6 +1,6 @@
 import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./modal/controller.js";
 import phoneService from "./modal/service.js";
-
+// import checkEmptyValue from "./validation/validation.js"
 const fectPhoneList = () => {
     phoneService
         .getPhoneListApi()
@@ -13,7 +13,7 @@ const fectPhoneList = () => {
 };
 
 fectPhoneList();
- //-------------DELETE--------------
+//-------------DELETE--------------
 
 let deletePhone = (id) => {
     phoneService
@@ -26,80 +26,76 @@ let deletePhone = (id) => {
             console.error('Error deleting phone:', err);
         });
 };
- 
+
 
 window.deletePhone = deletePhone;
 
 // -------TẠO MỚI---------
- 
-
-// let createPhone = () => {
-//     let  dataPhone = getDataPhoneForm()
-
-
-//   // Check for empty values before proceeding
-//   if (!checkEmptyValue(dataPhone.id, "tbid") ||
-//       !checkEmptyValue(dataPhone.name, "tbname") ||
-//       !checkEmptyValue(dataPhone.price, "tbprice") ||
-//       !checkEmptyValue(dataPhone.desc, "tbdesc") ||
-//       !checkEmptyValue(dataPhone.img, "tbimg")) {
-//     return; // Prevent form submission if any fields are empty
-//   }
-
-//     phoneService
-//         .createPhoneApi(dataPhone)  
-//         .then((res) => {
-//             // console.log('res',res);
-//             fectPhoneList()
-//             onSuccess('Thêm thành công');
-//             $('#exampleModal').modal('hide');
-//             document.getElementById('formPhone').reset();
-//         })
-//         .catch((err) => {
-//             console.error('Không thể tạo thông tin mới:', err);
-//         })
-// }
- 
-// window.createPhone = createPhone;
-//---------tạo mới kèm validation--------
 let createPhone = () => {
     let dataPhone = getDataPhoneForm();
+
+    phoneService
+        .createPhoneApi(dataPhone)
+        .then((res) => {
+            fectPhoneList();
+            onSuccess('Thêm thành công');
+            $('#exampleModal').modal('hide');
+            document.getElementById('formPhone').reset();
+        })
+        .catch((err) => {
+            console.error('Không thể tạo thông tin mới:', err);
+
+        });
+};
  
+   
+window.createPhone = createPhone;
+
+// let showAlertAndLogError = (message, error) => {
+//     alert(message);
+//     console.error(error);
+// };
+
+// let createPhone = () => {
+//     let dataPhone = getDataPhoneForm();
 
  
-    
-        phoneService
-            .createPhoneApi(dataPhone)
-            .then((res) => {
-                fectPhoneList();
-                validateForm()
-                onSuccess('Thêm thành công');
-                $('#exampleModal').modal('hide');
-                document.getElementById('formPhone').reset();
-            })
-            .catch((err) => {
-                console.error('Không được bỏ trống', err);
-            });
-    
-}
+//     phoneService
+//         .createPhoneApi(dataPhone)
+//         .then((res) => {
+//             // checkEmptyValue()
+//             fectPhoneList();
+
+//             onSuccess('Thêm thành công');
+//             $('#exampleModal').modal('hide');
+            
+//             // Reset giá trị của các trường trong form
+//             // document.getElementById('formPhone').reset();
+//         })
+//         .catch((err) => {
+//             // showAlertAndLogError('Đừng để trống ô nào nhé!', err);
+//         });
+// };
+ 
 
 window.createPhone = createPhone;
+
 
 
 
 //-------------GET (id) SỬA TỪNG ID-------------
 let getDetailPhone = (id) => {
     phoneService
-    .getDetailPhoneApi(id)
-    .then((res) => {
-      //   console.log('res: ', res);
-      showInfoPhone(res.data);
-      //   Ấn sửa thì hiện modal
-      $('#exampleModal').modal('show');
-    })
-    .catch((err) => {
-      console.log('err: ', err);
-    });
+        .getDetailPhoneApi(id)
+        .then((res) => {
+            //   console.log('res: ', res);
+            showInfoPhone(res.data);
+            //   Ấn sửa thì hiện modal
+            $('#exampleModal').modal('show');
+        })
+        .catch((err) => {
+            console.log('err: ', err);
+        });
 };
 window.getDetailPhone = getDetailPhone;
 
@@ -108,15 +104,14 @@ let updatePhone = () => {
     // lấy thông tin từ form
     let dataPhone = getDataPhoneForm()
     phoneService
-    .updatePhoneApi(dataPhone)
-    .then ((res) => {
-           fectPhoneList() 
-           $('#exampleModal').modal('hide');
+        .updatePhoneApi(dataPhone)
+        .then((res) => {
+            fectPhoneList()
+            $('#exampleModal').modal('hide');
 
-    })
-    .catch((err) => {
-        console.log(err);
-    }
-        )
+        })
+        .catch((err) => {
+
+        })
 }
 window.updatePhone = updatePhone
