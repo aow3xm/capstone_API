@@ -14,16 +14,57 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.0784313725);
   transition: all 0.3s ease-in-out;
 }
+@media only screen and (max-width: 600px) {
+  header .header_content button.header-bar {
+    display: block !important;
+  }
+  header .header_content nav.header-nav {
+    opacity: 0;
+    position: absolute;
+    right: 10%;
+  }
+  header .header_content nav.header-nav ul li {
+    display: block !important;
+    text-align: center;
+  }
+  header .header_content nav.header-nav ul li a {
+    font-size: 1.1rem !important;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
 header .header_content {
   max-width: 1700px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+header .header_content button.header-bar {
+  display: none;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
 header .header_content span.header-brand a {
   font-size: 50px;
   font-weight: 700;
   color: #ffffff;
+}
+header .header_content nav.header-nav {
+  transition: all 0.3s ease-in-out;
+}
+header .header_content nav.header-nav.active {
+  opacity: 1;
+  right: 15%;
+  background-color: #ffffff;
+  padding: 0 30px;
+  border-radius: 5px;
+}
+header .header_content nav.header-nav.active a {
+  color: #000000;
 }
 header .header_content nav.header-nav ul {
   margin: 0 0;

@@ -4,7 +4,12 @@
 @import './layouts/header';
 @import './pages/cart';
 
+
+header {
+    background-color: $color-black;
+}
+
 html,
 body {
-    background-color: $color-gray;
+    background-color: $color-white;
 }

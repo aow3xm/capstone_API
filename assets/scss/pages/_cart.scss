@@ -1,25 +1,55 @@
 section.cart {
     padding: 200px 0;
 
+
+    @include responsive($tablet) {
+        .item {
+            display: block !important;
+
+            .item-image {
+                margin: 0 auto;
+                height: 150px !important;
+                width: 150px !important;
+            }
+
+            .item-desc {
+                margin: auto !important;
+
+                .item-name {
+                    @include textStyle($font-size: 1.2rem !important, $font-weight: 600, $color: $color-black);
+                    padding-top: 10px !important;
+                }
+
+                .item-desc-p {
+                    @include textStyle($font-size: 0.9rem !important, $font-weight: 400, $color: $color-black);
+
+                }
+
+                .item-price {
+                    @include textStyle($font-size: 1rem !important, $font-weight: 600, $color: $color-black);
+                }
+
+
+            }
+        }
+    }
+
     .cart_content {
-        @include flexStyle(center, flex-end);
+        @include flexStyle(center, center);
         flex-direction: column;
         gap: 10px;
 
         .total {
             @include flexStyle(center, center);
-            align-items: center;
             flex-direction: row;
 
             .total_content {
                 @include flexStyle(flex-end, center);
                 align-items: center;
                 flex-direction: row;
-
                 gap: 20px;
                 padding: 20px;
-                width: 70%;
-                background-color: darken($color: $color-white, $amount: 5);
+                // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
                 h3 {
                     display: inline-block;
@@ -51,21 +81,26 @@ section.cart {
 
 
             .item {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: wrap;
                 padding: 20px;
-                width: 70%;
-                height: 200px;
-                background-color: darken($color: $color-white, $amount: 5);
+                max-width: 800px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
                 border-radius: 5px;
                 @include flexStyle(flex-start, flex-start);
                 gap: 20px;
                 flex-direction: row;
 
                 .item-image {
-                    /* Ensure the selector is correct */
-                    height: 100%;
+                    height: 300px;
+                    width: 300px;
+                    margin: 0 auto;
 
                     img {
                         height: 100%;
+                        width: 100%;
+
                         object-fit: contain;
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
                         border-radius: 5px;
@@ -78,6 +113,8 @@ section.cart {
                     .item-name {
                         @include textStyle($font-size: 1.4rem, $font-weight: 600, $color: $color-black);
 
+                        margin: 0;
+
                     }
 
                     .item-desc-p {
@@ -87,6 +124,7 @@ section.cart {
 
                     .item-price {
                         @include textStyle($font-size: 1.2rem, $font-weight: 600, $color: $color-black);
+                        margin: 0;
                     }
 
                     .item-quantity {

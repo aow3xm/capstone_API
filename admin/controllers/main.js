@@ -1,5 +1,5 @@
-import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controllers/controller.js";
-import phoneService from "./controllers/service.js";
+import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controller.js";
+import phoneService from "./service.js";
 
 const fectPhoneList = () => {
     phoneService
