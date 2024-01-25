@@ -1,6 +1,6 @@
 import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controllers/controller.js";
 import phoneService from "./controllers/service.js";
-import { onSuccess, onFail } from "./controllers/controller.js";
+import { onSuccess, onFail,resetForm } from "./controllers/controller.js";
 const fectPhoneList = () => {
     phoneService
         .getPhoneListApi()
@@ -32,33 +32,50 @@ let deletePhone = (id) => {
 window.deletePhone = deletePhone;
 
 // -------TẠO MỚI---------
-// let createPhone = () => {
-
-//     let dataPhone = getDataPhoneForm()
-//     phoneService
-//         .createPhoneApi(dataPhone)
-//         .then((res) => {
-//             // console.log('res',res);
-//             fectPhoneList();
-//             $('#exampleModal').modal('hide');
-//             onSuccess('Thêm thành công')
-//         })
-//         .catch((err) => {
-//             console.error('Không thể tạo thôn tin mới:', err);
-//             onFail('hãy nhập đủ thông tin')
-//         })
-// }
+ 
 let createPhone = () => {
     // Lấy dữ liệu từ form
     let dataPhone = getDataPhoneForm();
 
     // Kiểm tra nếu dữ liệu điện thoại không hợp lệ (ví dụ: trống)
+    // if (!isValidPhoneData(dataPhone)) {
+    //     // Hiển thị thông báo lỗi bằng hàm onFail
+    //     onFail('Hãy nhập đủ thông tin.');
+    //     return; // Dừng thực thi hàm nếu có lỗi
+    // }
+    //   // Kiểm tra tính hợp lệ của giá (phải là số)
+    //   if (isNaN(dataPhone.price)) {
+    //     onFail('Giá tiền phải là một con số nhất định!');
+    //     return;
+    // }
+    //   // Kiểm tra tính hợp lệ của giá (phải là số)
+    //   if (isNaN(dataPhone.screen)) {
+    //     onFail('Giá phải là một số.');
+    //     return;
+    // }
     if (!isValidPhoneData(dataPhone)) {
         // Hiển thị thông báo lỗi bằng hàm onFail
         onFail('Hãy nhập đủ thông tin.');
         return; // Dừng thực thi hàm nếu có lỗi
     }
 
+    // Kiểm tra tính hợp lệ của giá (phải là số)
+    if (isNaN(dataPhone.price)) {
+        // Hiển thị thông báo lỗi cho giá ở sp-thongbao
+        let errorElement = document.getElementById('tbprice');
+        if (errorElement) {
+            errorElement.innerHTML = 'Giá phải là một số.';
+        }
+        // Hiển thị thông báo lỗi bằng hàm onFail
+        onFail('Giá phải là một số.');
+        return;
+    } else {
+        // Nếu giá hợp lệ, xóa thông báo lỗi ở sp-thongbao
+        let errorElement = document.getElementById('tbprice');
+        if (errorElement) {
+            errorElement.innerHTML = '';
+        }
+    }
     // Nếu dữ liệu hợp lệ, gọi API để tạo mới điện thoại
     phoneService
         .createPhoneApi(dataPhone)
@@ -67,6 +84,7 @@ let createPhone = () => {
             fectPhoneList();
             $('#exampleModal').modal('hide');
             onSuccess('Thêm thành công');
+            resetForm()
         })
         .catch((err) => {
             // Xử lý khi gặp lỗi trong quá trình tạo mới

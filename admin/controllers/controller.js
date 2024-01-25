@@ -75,3 +75,19 @@ export let showInfoPhone = (dataPhone) => {
     document.getElementById('img').value = dataPhone.img;
 
 };
+// Function to reset the input fields in the form
+export let resetForm = () => {
+    document.getElementById('name').value = '';
+    document.getElementById('price').value = '';
+    document.getElementById('desc').value = '';
+    document.getElementById('frontCamera').value = '';
+    document.getElementById('backCamera').value = '';
+    document.getElementById('screen').value = '';
+    document.getElementById('img').value = '';
+
+    // Reset any error messages if needed
+    let errorElements = document.querySelectorAll('.sp-thongbao');
+    errorElements.forEach((element) => {
+        element.innerHTML = '';
+    });
+};
