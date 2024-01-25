@@ -9,11 +9,11 @@ export let renderPhoneList = (phoneArr) => {
         <td>${item.name}</td>
         <td>${item.price}</td>
         <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
-        <td>${item.frontCamera}
-        <td>${item.backCamera}
-        <td>${item.screen}
-        <td>${item.desc}
-            
+        
+        <td>${item.desc}<br>
+        <strong>Màn hình:</strong> ${item.screen}<br>
+        <strong>Camera trước:</strong> ${item.frontCamera}<br>
+        <strong>Camera sau:</strong> ${item.backCamera}<br>
         </td>
         <td>
             <button onclick="deletePhone(${item.id})" class="btn btn-danger">Delete</button>
@@ -36,18 +36,19 @@ export let onSuccess = (message) => {
     });
 };
 export let onFail = (errorMessage) => {
-   
+
     Swal.fire({
-         
+
         title: 'Error!',
-         
+
         text: errorMessage,
-      
+
         icon: 'error',
     });
 };
 
 export let getDataPhoneForm = () => {
+    let id = document.getElementById('id').value;
     let name = document.getElementById('name').value;
     let price = document.getElementById('price').value;
     let desc = document.getElementById('desc').value;
@@ -63,6 +64,7 @@ export let getDataPhoneForm = () => {
         frontCamera,
         backCamera,
         screen,
+        id
     };
     return phone;
 };
@@ -75,7 +77,7 @@ export let showInfoPhone = (dataPhone) => {
     document.getElementById('frontCamera').value = dataPhone.frontCamera;
     document.getElementById('backCamera').value = dataPhone.backCamera;
     document.getElementById('screen').value = dataPhone.screen;
-    
+
 
 };
 // Function to reset the input fields in the form

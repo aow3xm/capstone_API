@@ -111,6 +111,7 @@ window.getDetailPhone = getDetailPhone;
 let updatePhone = () => {
     // lấy thông tin từ form
     let dataPhone = getDataPhoneForm()
+    console.log(dataPhone.id)
     phoneService
         .updatePhoneApi(dataPhone)
         .then((res) => {
@@ -123,4 +124,4 @@ let updatePhone = () => {
         }
         )
 }
-window.updatePhone = updatePhone
+window.updatePhone = updatePhone;
