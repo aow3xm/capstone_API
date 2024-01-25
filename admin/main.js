@@ -37,22 +37,6 @@ let createPhone = () => {
     // Lấy dữ liệu từ form
     let dataPhone = getDataPhoneForm();
 
-    // Kiểm tra nếu dữ liệu điện thoại không hợp lệ (ví dụ: trống)
-    // if (!isValidPhoneData(dataPhone)) {
-    //     // Hiển thị thông báo lỗi bằng hàm onFail
-    //     onFail('Hãy nhập đủ thông tin.');
-    //     return; // Dừng thực thi hàm nếu có lỗi
-    // }
-    //   // Kiểm tra tính hợp lệ của giá (phải là số)
-    //   if (isNaN(dataPhone.price)) {
-    //     onFail('Giá tiền phải là một con số nhất định!');
-    //     return;
-    // }
-    //   // Kiểm tra tính hợp lệ của giá (phải là số)
-    //   if (isNaN(dataPhone.screen)) {
-    //     onFail('Giá phải là một số.');
-    //     return;
-    // }
     if (!isValidPhoneData(dataPhone)) {
         // Hiển thị thông báo lỗi bằng hàm onFail
         onFail('Hãy nhập đủ thông tin.');
@@ -109,7 +93,7 @@ let getDetailPhone = (id) => {
     phoneService
         .getDetailPhoneApi(id)
         .then((res) => {
-            //   console.log('res: ', res);
+            
             showInfoPhone(res.data);
             //   Ấn sửa thì hiện modal
             $('#exampleModal').modal('show');

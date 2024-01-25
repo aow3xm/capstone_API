@@ -17,7 +17,7 @@ export let renderPhoneList = (phoneArr) => {
         </td>
         <td>
             <button onclick="deletePhone(${item.id})" class="btn btn-danger">Delete</button>
-            <button class="btn btn-primary" onclick="getDetailPhone(${item.id})">Sửa</button>
+            <button  class="btn btn-primary" onclick="getDetailPhone(${item.id})">Sửa</button>
         </td>
     </tr>
     
@@ -55,6 +55,7 @@ export let getDataPhoneForm = () => {
     let frontCamera = document.getElementById('frontCamera').value;
     let backCamera = document.getElementById('backCamera').value;
     let screen = document.getElementById('screen').value;
+    
     let phone = {
         name,
         price,
@@ -67,12 +68,16 @@ export let getDataPhoneForm = () => {
     return phone;
 };
 export let showInfoPhone = (dataPhone) => {
-    console.log('dataPhone: ', dataPhone);
+    console.log(dataPhone);
     document.getElementById('id').value = dataPhone.id;
     document.getElementById('name').value = dataPhone.name;
     document.getElementById('price').value = dataPhone.price;
-    document.getElementById('desc').value = dataPhone.desc;
     document.getElementById('img').value = dataPhone.img;
+    document.getElementById('desc').value = dataPhone.desc;
+    document.getElementById('frontCamera').value = dataPhone.frontCamera;
+    document.getElementById('backCamera').value = dataPhone.backCamera;
+    document.getElementById('screen').value = dataPhone.screen;
+    
 
 };
 // Function to reset the input fields in the form
