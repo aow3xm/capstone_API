@@ -1,6 +1,12 @@
+<<<<<<< HEAD:admin/controllers/main.js
 import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controller.js";
 import phoneService from "./service.js";
 
+=======
+import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controllers/controller.js";
+import phoneService from "./controllers/service.js";
+import { onSuccess, onFail,resetForm } from "./controllers/controller.js";
+>>>>>>> 09a4b17bb805e63de661bf328ef0328e8260d0be:admin/main.js
 const fectPhoneList = () => {
     phoneService
         .getPhoneListApi()
@@ -20,9 +26,11 @@ let deletePhone = (id) => {
         .deletePhoneApi(id)
         .then((res) => {
             fectPhoneList();
+            onSuccess('Xoá thành công')
         })
         .catch((err) => {
             console.error('Error deleting phone:', err);
+            
         });
 };
 
@@ -30,21 +38,59 @@ let deletePhone = (id) => {
 window.deletePhone = deletePhone;
 
 // -------TẠO MỚI---------
+ 
 let createPhone = () => {
+    // Lấy dữ liệu từ form
+    let dataPhone = getDataPhoneForm();
 
-    let dataPhone = getDataPhoneForm()
+    if (!isValidPhoneData(dataPhone)) {
+        // Hiển thị thông báo lỗi bằng hàm onFail
+        onFail('Hãy nhập đủ thông tin.');
+        return; // Dừng thực thi hàm nếu có lỗi
+    }
+
+    // Kiểm tra tính hợp lệ của giá (phải là số)
+    if (isNaN(dataPhone.price)) {
+        // Hiển thị thông báo lỗi cho giá ở sp-thongbao
+        let errorElement = document.getElementById('tbprice');
+        if (errorElement) {
+            errorElement.innerHTML = 'Giá phải là một số.';
+        }
+        // Hiển thị thông báo lỗi bằng hàm onFail
+        onFail('Giá phải là một số.');
+        return;
+    } else {
+        // Nếu giá hợp lệ, xóa thông báo lỗi ở sp-thongbao
+        let errorElement = document.getElementById('tbprice');
+        if (errorElement) {
+            errorElement.innerHTML = '';
+        }
+    }
+    // Nếu dữ liệu hợp lệ, gọi API để tạo mới điện thoại
     phoneService
         .createPhoneApi(dataPhone)
         .then((res) => {
-            // console.log('res',res);
+            // Xử lý khi tạo mới thành công
             fectPhoneList();
             $('#exampleModal').modal('hide');
-
+            onSuccess('Thêm thành công');
+            resetForm()
         })
         .catch((err) => {
-            console.error('Không thể tạo thôn tin mới:', err);
-        })
-}
+            // Xử lý khi gặp lỗi trong quá trình tạo mới
+            console.error('Không thể tạo thông tin mới:', err);
+            onFail('Có lỗi xảy ra khi tạo mới thông tin.');
+        });
+};
+
+// Hàm kiểm tra tính hợp lệ của dữ liệu điện thoại
+let isValidPhoneData = (dataPhone) => {
+    // Thực hiện các kiểm tra tính hợp lệ ở đây
+
+    // Kiểm tra xem tên điện thoại có được nhập không
+    return dataPhone && dataPhone.name && dataPhone.name.trim() !== '';
+};
+
 
 window.createPhone = createPhone;
 
@@ -53,7 +99,7 @@ let getDetailPhone = (id) => {
     phoneService
         .getDetailPhoneApi(id)
         .then((res) => {
-            //   console.log('res: ', res);
+            
             showInfoPhone(res.data);
             //   Ấn sửa thì hiện modal
             $('#exampleModal').modal('show');

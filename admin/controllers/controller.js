@@ -4,21 +4,24 @@ export let renderPhoneList = (phoneArr) => {
     let contentHTML = '';
     phoneArr.reverse().forEach((item) => {
         let trString = `
-            <tr>
-                <td>${item.id}</td>
-                <td>${item.name}</td>
-                <td>${item.price}</td>
-                <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
-                <td>${item.desc}</td>
-
-                <td>
-                <button onclick="deletePhone(${item.id
-            })" class= "btn btn-danger">Delete</button>
+        <tr>
+        <td>${item.id}</td>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
+        <td>${item.frontCamera}
+        <td>${item.backCamera}
+        <td>${item.screen}
+        <td>${item.desc}
             
-                    <button class="btn btn-primary" onclick="getDetailPhone(${item.id
-            })">Sửa</button>
-                </td>
-            </tr>
+        </td>
+        <td>
+            <button onclick="deletePhone(${item.id})" class="btn btn-danger">Delete</button>
+            <button  class="btn btn-primary" onclick="getDetailPhone(${item.id})">Sửa</button>
+        </td>
+    </tr>
+    
+            
         `;
         contentHTML += trString;
     });
@@ -32,6 +35,18 @@ export let onSuccess = (message) => {
         icon: 'success',
     });
 };
+export let onFail = (errorMessage) => {
+   
+    Swal.fire({
+         
+        title: 'Error!',
+         
+        text: errorMessage,
+      
+        icon: 'error',
+    });
+};
+
 export let getDataPhoneForm = () => {
     let name = document.getElementById('name').value;
     let price = document.getElementById('price').value;
@@ -40,6 +55,7 @@ export let getDataPhoneForm = () => {
     let frontCamera = document.getElementById('frontCamera').value;
     let backCamera = document.getElementById('backCamera').value;
     let screen = document.getElementById('screen').value;
+    
     let phone = {
         name,
         price,
@@ -52,11 +68,31 @@ export let getDataPhoneForm = () => {
     return phone;
 };
 export let showInfoPhone = (dataPhone) => {
-    console.log('dataPhone: ', dataPhone);
+    console.log(dataPhone);
     document.getElementById('id').value = dataPhone.id;
     document.getElementById('name').value = dataPhone.name;
     document.getElementById('price').value = dataPhone.price;
-    document.getElementById('desc').value = dataPhone.desc;
     document.getElementById('img').value = dataPhone.img;
+    document.getElementById('desc').value = dataPhone.desc;
+    document.getElementById('frontCamera').value = dataPhone.frontCamera;
+    document.getElementById('backCamera').value = dataPhone.backCamera;
+    document.getElementById('screen').value = dataPhone.screen;
+    
 
+};
+// Function to reset the input fields in the form
+export let resetForm = () => {
+    document.getElementById('name').value = '';
+    document.getElementById('price').value = '';
+    document.getElementById('desc').value = '';
+    document.getElementById('frontCamera').value = '';
+    document.getElementById('backCamera').value = '';
+    document.getElementById('screen').value = '';
+    document.getElementById('img').value = '';
+
+    // Reset any error messages if needed
+    let errorElements = document.querySelectorAll('.sp-thongbao');
+    errorElements.forEach((element) => {
+        element.innerHTML = '';
+    });
 };
