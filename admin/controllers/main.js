@@ -1,12 +1,9 @@
-<<<<<<< HEAD:admin/controllers/main.js
-import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controller.js";
-import phoneService from "./service.js";
 
-=======
-import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "./controllers/controller.js";
-import phoneService from "./controllers/service.js";
-import { onSuccess, onFail,resetForm } from "./controllers/controller.js";
->>>>>>> 09a4b17bb805e63de661bf328ef0328e8260d0be:admin/main.js
+
+import { getDataPhoneForm, renderPhoneList, showInfoPhone, } from "../controllers/controller.js";
+import phoneService from "../controllers/service.js";
+import { onSuccess, onFail, resetForm } from "../controllers/controller.js";
+
 const fectPhoneList = () => {
     phoneService
         .getPhoneListApi()
@@ -30,7 +27,7 @@ let deletePhone = (id) => {
         })
         .catch((err) => {
             console.error('Error deleting phone:', err);
-            
+
         });
 };
 
@@ -38,7 +35,7 @@ let deletePhone = (id) => {
 window.deletePhone = deletePhone;
 
 // -------TẠO MỚI---------
- 
+
 let createPhone = () => {
     // Lấy dữ liệu từ form
     let dataPhone = getDataPhoneForm();
@@ -99,7 +96,7 @@ let getDetailPhone = (id) => {
     phoneService
         .getDetailPhoneApi(id)
         .then((res) => {
-            
+
             showInfoPhone(res.data);
             //   Ấn sửa thì hiện modal
             $('#exampleModal').modal('show');
