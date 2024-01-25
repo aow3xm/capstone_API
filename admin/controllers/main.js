@@ -42,10 +42,27 @@ let createPhone = () => {
 
     if (!isValidPhoneData(dataPhone)) {
         // Hiển thị thông báo lỗi bằng hàm onFail
+
         onFail('Hãy nhập đủ thông tin.');
         return; // Dừng thực thi hàm nếu có lỗi
     }
-
+    // Kiểm tra tính hợp lệ của fontcamera (phải là số)
+    // if (isNaN(dataPhone.frontCamera)) {
+    //     // Hiển thị thông báo lỗi cho giá ở sp-thongbao
+    //     let errorElement = document.getElementById('tbfrontcamera');
+    //     if (errorElement) {
+    //         errorElement.innerHTML = 'Hãy nhập vào một con số.';
+    //     }
+    //     // Hiển thị thông báo lỗi bằng hàm onFail
+    //     onFail('Hãy nhập vào một con số.');
+    //     return;
+    // } else {
+    //     // Nếu  hợp lệ, xóa thông báo lỗi ở sp-thongbao
+    //     let errorElement = document.getElementById('tbfrontcamera');
+    //     if (errorElement) {
+    //         errorElement.innerHTML = '';
+    //     }
+    // }
     // Kiểm tra tính hợp lệ của giá (phải là số)
     if (isNaN(dataPhone.price)) {
         // Hiển thị thông báo lỗi cho giá ở sp-thongbao
