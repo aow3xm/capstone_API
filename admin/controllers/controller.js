@@ -55,7 +55,6 @@ export let getDataPhoneForm = () => {
     let frontCamera = document.getElementById('frontCamera').value;
     let backCamera = document.getElementById('backCamera').value;
     let screen = document.getElementById('screen').value;
-    
     let phone = {
         name,
         price,
@@ -68,7 +67,6 @@ export let getDataPhoneForm = () => {
     return phone;
 };
 export let showInfoPhone = (dataPhone) => {
-    console.log(dataPhone);
     document.getElementById('id').value = dataPhone.id;
     document.getElementById('name').value = dataPhone.name;
     document.getElementById('price').value = dataPhone.price;
