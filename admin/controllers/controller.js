@@ -4,21 +4,24 @@ export let renderPhoneList = (phoneArr) => {
     let contentHTML = '';
     phoneArr.reverse().forEach((item) => {
         let trString = `
-            <tr>
-                <td>${item.id}</td>
-                <td>${item.name}</td>
-                <td>${item.price}</td>
-                <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
-                <td>${item.desc}</td>
-
-                <td>
-                <button onclick="deletePhone(${item.id
-            })" class= "btn btn-danger">Delete</button>
+        <tr>
+        <td>${item.id}</td>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td><img src="${item.img}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
+        <td>${item.frontCamera}
+        <td>${item.backCamera}
+        <td>${item.screen}
+        <td>${item.desc}
             
-                    <button class="btn btn-primary" onclick="getDetailPhone(${item.id
-            })">Sửa</button>
-                </td>
-            </tr>
+        </td>
+        <td>
+            <button onclick="deletePhone(${item.id})" class="btn btn-danger">Delete</button>
+            <button class="btn btn-primary" onclick="getDetailPhone(${item.id})">Sửa</button>
+        </td>
+    </tr>
+    
+            
         `;
         contentHTML += trString;
     });
@@ -32,6 +35,18 @@ export let onSuccess = (message) => {
         icon: 'success',
     });
 };
+export let onFail = (errorMessage) => {
+   
+    Swal.fire({
+         
+        title: 'Error!',
+         
+        text: errorMessage,
+      
+        icon: 'error',
+    });
+};
+
 export let getDataPhoneForm = () => {
     let name = document.getElementById('name').value;
     let price = document.getElementById('price').value;
