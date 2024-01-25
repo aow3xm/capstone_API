@@ -23,6 +23,9 @@ header {
     position: absolute;
     right: 10%;
   }
+  header .header_content nav.header-nav ul {
+    padding: 0;
+  }
   header .header_content nav.header-nav ul li {
     display: block !important;
     text-align: center;

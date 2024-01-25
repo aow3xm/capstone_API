@@ -18,6 +18,8 @@ header {
 
     @include responsive($phone) {
         .header_content {
+
+
             button.header-bar {
                 display: block !important;
             }
@@ -28,6 +30,8 @@ header {
                 right: 10%;
 
                 ul {
+                    padding: 0;
+
                     li {
                         display: block !important;
                         text-align: center;
