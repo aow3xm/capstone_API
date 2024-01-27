@@ -18,16 +18,27 @@ header {
 
     @include responsive($phone) {
         .header_content {
+            padding: 0;
 
+            span.header-brand {
+                margin-left: 15px;
+            }
 
             button.header-bar {
                 display: block !important;
+                margin-right: 15px;
             }
 
             nav.header-nav {
                 opacity: 0;
-                position: absolute;
-                right: 10%;
+                @include flexStyle(center, center);
+                height: 400px;
+                width: 100vw;
+                transition: all 0.5s ease-in-out;
+                position: fixed;
+                z-index: -1;
+                ;
+                transform: translateY(0);
 
                 ul {
                     padding: 0;
@@ -37,7 +48,18 @@ header {
                         text-align: center;
 
                         a {
-                            @include textStyle(1.1rem !important, $fw-bold, $color-white);
+                            @include textStyle(1.5rem !important, $fw-bold, $color-white !important);
+
+                            &:hover {
+                                color: darken($color: $color-white, $amount: 20) !important;
+                            }
+
+                            &#cart {
+                                span.cart-value {
+                                    @include textStyle(0.9rem !important, $fw-bold, $color-white !important);
+                                }
+                            }
+
                         }
 
                     }
@@ -69,17 +91,25 @@ header {
 
 
         nav.header-nav {
-            transition: all 0.3s ease-in-out;
+
 
             &.active {
-                opacity: 1;
-                right: 15%;
-                background-color: $color-white;
-                padding: 0 30px;
-                border-radius: 5px;
 
-                a {
-                    color: $color-black;
+                opacity: 1;
+                color: $color-white ;
+                transform: translateY(100px);
+
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    opacity: 0.9;
+                    z-index: -1;
                 }
             }
 
