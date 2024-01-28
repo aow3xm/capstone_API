@@ -101,8 +101,8 @@ let createPhone = () => {
 let isValidPhoneData = (dataPhone) => {
     // Thực hiện các kiểm tra tính hợp lệ ở đây
 
-    // Kiểm tra xem tên điện thoại có được nhập không
-    return dataPhone && dataPhone.name && dataPhone.name.trim() !== '';
+   // Kiểm tra xem tên điện thoại có được nhập không
+   return dataPhone && dataPhone.backCamera && dataPhone.frontCamera && dataPhone.screen &&  dataPhone.desc && dataPhone.img  && dataPhone.id  && dataPhone.price && dataPhone.name && dataPhone.name.trim() !== '';
 };
 
 
