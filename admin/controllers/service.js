@@ -33,15 +33,22 @@ let updatePhoneApi = (data) => {
     data: data,
   })
 }
+ 
+let searchPhoneApi = (searchName) => {
+  return axios({
+      url: `${BASE_URL}?search=${searchName}`,
+      method: 'GET',
+  });
+};
 
+ 
 let phoneService = {
   getPhoneListApi,
   deletePhoneApi,
   createPhoneApi,
   getDetailPhoneApi,
   updatePhoneApi,
-}
-
-
+  searchPhoneApi,  
+};
 
 export default phoneService;

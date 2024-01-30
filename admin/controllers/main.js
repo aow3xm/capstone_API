@@ -142,3 +142,39 @@ let updatePhone = () => {
         )
 }
 window.updatePhone = updatePhone;
+//---------TÌM KÍM ----------
+ 
+// Thêm hàm tìm kiếm
+// Thêm hàm searchPhone
+let searchPhone = () => {
+    // Lấy giá trị từ ô nhập liệu
+    let searchNameInput = document.getElementById('searchName');
+    let searchName = searchNameInput.value.trim();
+
+    // Kiểm tra xem ô nhập liệu có rỗng không
+    if (searchName === '') {
+        onFail('Hãy nhập thông tin cần tìm kiếm.');
+        return;
+    }
+
+    // Gọi API tìm kiếm
+    phoneService
+        .searchPhoneApi(searchName)
+        .then((res) => {
+            // Check if there are any results
+            if (res.data.length === 0) {
+                onFail('Không tìm thấy sản phẩm nào.');
+            } else {
+                // Display search results on the screen
+                renderPhoneList(res.data);
+                // Optionally, you may want to show details of the first result
+                showInfoPhone(res.data[0]);
+            }
+        })
+        .catch((err) => {
+            console.error('Error searching phone:', err);
+            onFail('Có lỗi xảy ra khi tìm kiếm sản phẩm.');
+        });
+};
+
+window.searchPhone = searchPhone;
