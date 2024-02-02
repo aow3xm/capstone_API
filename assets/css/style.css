@@ -147,7 +147,7 @@ section.introduction {
   background-position: center;
   color: #000000;
   max-width: 100vw;
-  max-height: calc(100vh + 100px);
+  max-height: 100vh;
   padding: 200px 0;
   background-color: #86A7FC;
 }
@@ -292,6 +292,11 @@ section.products {
   background-color: #ffffff;
   padding: 100px 0;
 }
+@media only screen and (max-width: 800px) {
+  section.products .col-12 {
+    max-width: 330px !important;
+  }
+}
 section.products .products_content {
   display: flex;
   justify-content: center;
@@ -330,7 +335,6 @@ section.products .products_content .products_list .row .item {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  max-width: 330px;
   min-height: 600px;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
